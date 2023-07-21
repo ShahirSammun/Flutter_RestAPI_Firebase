@@ -1,58 +1,91 @@
 import 'package:flutter/material.dart';
 
-
-void main() {
+ main() {
   runApp(
-    const MyApp(appName: 'Hello App'),
+    const MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
-  final String appName;
-
-  const MyApp({required this.appName});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: appName, home: HomeScreen());
+    return const MaterialApp(
+      home: HomeScreen(),
+    );
   }
 }
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
       appBar: AppBar(
-        title: const Text(
-          'Intro to widgets',
-          textAlign: TextAlign.start,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w700,
-            wordSpacing: 0.5,
-            letterSpacing: 0.5,
-            fontSize: 18,
-            decoration: TextDecoration.underline,
-          ),
-        ),
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.call),
-          ),
-        ],
-        backgroundColor: Colors.blueAccent,
+        title: const Text('Basic Widgets'),
         centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text('Hello & Welcome')],
+          children: [
+            Container(
+              color: Colors.teal,
+              height: 100,
+              width: 200,
+              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              child: const Text(
+                'Hello',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            Container(
+              height: 100,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.lightBlue,
+                border: Border.all(color: Colors.black87, width: 5),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              child: const Text(
+                'Hello',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            const Icon(
+              Icons.access_time,
+              color: Colors.black,
+              size: 50,
+              fill: 1,
+            ),
+            Image.asset(
+              'image/192488.jpg',
+              width: 500,
+              height: 100,
+              fit: BoxFit.contain,
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: Image.asset(
+                'image/1916172.jpg',
+                width: 550,
+                height: 100,
+              ),
+            ),
+          ],
         ),
       ),
     );
